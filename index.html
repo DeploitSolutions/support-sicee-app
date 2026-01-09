@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SICEE LTD — Soporte</title>
+  <meta name="description" content="Centro de soporte oficial de SICEE LTD. Ayuda, contacto, preguntas frecuentes, privacidad y eliminación de cuenta para la app de monitoreo electoral." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#111a33;
+      --card2:#0f1730;
+      --text:#e8ecff;
+      --muted:#b9c2ffcc;
+      --accent:#6ee7ff;
+      --accent2:#9b7cff;
+      --border:#22305f;
+      --danger:#ff6b6b;
+      --ok:#37d67a;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1100px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1000px 500px at 10% 0%, rgba(110,231,255,.14), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(155,124,255,.12), transparent 55%),
+        radial-gradient(800px 500px at 40% 95%, rgba(55,214,122,.10), transparent 60%),
+        var(--bg);
+      line-height:1.5;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--max); margin:0 auto; padding:24px}
+    header{
+      position:sticky;
+      top:0;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(11,16,32,.85), rgba(11,16,32,.55));
+      border-bottom:1px solid rgba(34,48,95,.55);
+      z-index:10;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 24px;
+      max-width:var(--max);
+      margin:0 auto;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:38px;height:38px;border-radius:12px;
+      background: linear-gradient(135deg, rgba(110,231,255,.9), rgba(155,124,255,.85));
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .brand span small{
+      display:block;
+      font-weight:500;
+      color:var(--muted);
+      letter-spacing:0;
+      margin-top:2px;
+      font-size:12px;
+    }
+    .navlinks{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      font-size:13px;
+      color:var(--text);
+      padding:8px 12px;
+      border:1px solid rgba(34,48,95,.8);
+      border-radius:999px;
+      background: rgba(17,26,51,.45);
+      transition: transform .15s ease, background .15s ease;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      background: rgba(17,26,51,.75);
+      text-decoration:none;
+    }
+
+    .hero{
+      padding:40px 0 18px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .hero-card{
+      background: linear-gradient(180deg, rgba(17,26,51,.85), rgba(17,26,51,.55));
+      border:1px solid rgba(34,48,95,.8);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(600px 220px at 15% 15%, rgba(110,231,255,.25), transparent 60%),
+        radial-gradient(500px 260px at 85% 25%, rgba(155,124,255,.20), transparent 58%);
+      pointer-events:none;
+      filter: blur(2px);
+      opacity:.9;
+    }
+    .hero-card > *{position:relative}
+    h1{
+      margin:0 0 8px;
+      font-size: clamp(26px, 3.2vw, 42px);
+      line-height:1.1;
+      letter-spacing:-.6px;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      max-width: 55ch;
+    }
+    .quick{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(34,48,95,.85);
+      background: rgba(15,23,48,.65);
+      color:var(--text);
+      font-weight:600;
+      font-size:14px;
+      transition: transform .15s ease, background .15s ease, border .15s ease;
+      cursor:pointer;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(15,23,48,.9);
+      border-color: rgba(110,231,255,.55);
+      text-decoration:none;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(110,231,255,.22), rgba(155,124,255,.20));
+      border-color: rgba(255,255,255,.12);
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      color: var(--muted);
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(34,48,95,.7);
+      background: rgba(17,26,51,.35);
+      margin-top:18px;
+      width:fit-content;
+    }
+    .dot{
+      width:9px;height:9px;border-radius:50%;
+      background: var(--ok);
+      box-shadow: 0 0 18px rgba(55,214,122,.45);
+    }
+
+    .side-card{
+      background: linear-gradient(180deg, rgba(17,26,51,.60), rgba(17,26,51,.35));
+      border:1px solid rgba(34,48,95,.8);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height: 100%;
+    }
+    .side-card h3{margin:0 0 10px;font-size:16px}
+    .side-card p{margin:0 0 14px;color:var(--muted);font-size:13.5px}
+    .kv{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+    .kv div{
+      padding:12px;
+      background: rgba(15,23,48,.55);
+      border:1px solid rgba(34,48,95,.65);
+      border-radius: 14px;
+    }
+    .kv div b{display:block;font-size:13px;margin-bottom:3px}
+    .kv div span{font-size:13px;color:var(--muted)}
+
+    main{
+      padding:10px 0 40px;
+    }
+    section{
+      margin-top:18px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(17,26,51,.58), rgba(17,26,51,.35));
+      border:1px solid rgba(34,48,95,.8);
+      border-radius: var(--radius);
+      padding:22px;
+      box-shadow: var(--shadow);
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+    .card p, .card li{
+      color:var(--muted);
+      font-size:14px;
+    }
+    .card ul{margin:10px 0 0 18px}
+    .card li{margin-bottom:8px}
+    .divider{
+      height:1px;
+      background: rgba(34,48,95,.7);
+      margin:14px 0;
+    }
+    .callout{
+      padding:14px;
+      border-radius:14px;
+      border:1px solid rgba(34,48,95,.8);
+      background: rgba(15,23,48,.55);
+      color: var(--muted);
+      font-size:13.5px;
+    }
+    .callout b{color:var(--text)}
+    .danger{
+      border-color: rgba(255,107,107,.45);
+      background: rgba(255,107,107,.08);
+    }
+    .muted{color:var(--muted)}
+    .mini{
+      font-size:12.5px;
+      color:var(--muted);
+    }
+
+    form{
+      display:grid;
+      gap:12px;
+      margin-top: 14px;
+    }
+    label{
+      font-size:13px;
+      color:var(--muted);
+      display:block;
+      margin-bottom:6px;
+    }
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid rgba(34,48,95,.8);
+      background: rgba(15,23,48,.65);
+      color: var(--text);
+      outline:none;
+      font-family:var(--font);
+      font-size:14px;
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(110,231,255,.6);
+      box-shadow: 0 0 0 3px rgba(110,231,255,.12);
+    }
+    textarea{min-height:120px; resize:vertical}
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+
+    footer{
+      border-top: 1px solid rgba(34,48,95,.65);
+      margin-top: 26px;
+      padding: 22px 0 40px;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .footer-grid{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .footer-grid a{color:var(--text)}
+    .tag{
+      padding:6px 10px;
+      border:1px solid rgba(34,48,95,.75);
+      border-radius:999px;
+      display:inline-block;
+      margin-right:8px;
+      margin-bottom:8px;
+      background: rgba(17,26,51,.25);
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .row{grid-template-columns:1fr}
+      .nav{padding:14px 16px}
+      .container{padding:18px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <span>
+        SICEE LTD — Soporte
+        <small>Centro de ayuda y cumplimiento para App Store</small>
+      </span>
+    </div>
+
+    <nav class="navlinks" aria-label="Navegación">
+      <a class="pill" href="#contacto">Contacto</a>
+      <a class="pill" href="#faq">FAQ</a>
+      <a class="pill" href="#privacidad">Privacidad</a>
+      <a class="pill" href="#eliminar">Eliminar cuenta</a>
+      <a class="pill" href="#terminos">Términos</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <section class="hero" id="inicio">
+    <div class="hero-grid">
+      <div class="hero-card">
+        <h1>Centro de Soporte — App de Monitoreo Electoral</h1>
+        <p class="subtitle">
+          Ayuda rápida para reportar incidencias, recibir soporte técnico y conocer nuestras políticas de privacidad
+          y eliminación de cuenta/datos.
+        </p>
+
+        <div class="quick">
+          <a class="btn primary" href="mailto:support@sicee.ltd">📩 support@sicee.ltd</a>
+          <a class="btn" href="#contacto">🧾 Formulario de soporte</a>
+          <a class="btn" href="#eliminar">🗑️ Eliminar cuenta</a>
+        </div>
+
+        <div class="badge">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Estado del servicio: <b>Operativo</b> (puedes editar esto)</span>
+        </div>
+      </div>
+
+      <aside class="side-card">
+        <div>
+          <h3>Información rápida</h3>
+          <p>
+            Recomendado para revisión de Apple: esta página es pública, no requiere login e incluye contacto,
+            privacidad y eliminación de cuenta.
+          </p>
+
+          <div class="kv">
+            <div>
+              <b>Soporte</b>
+              <span><a href="mailto:support@sicee.ltd">support@sicee.ltd</a></span>
+            </div>
+            <div>
+              <b>Horario</b>
+              <span>Lun–Vie, 09:00–18:00 (UTC−3)</span>
+            </div>
+            <div>
+              <b>Última actualización</b>
+              <span>09 Ene 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="callout">
+          <b>Tip:</b> Si quieres un dominio para App Store, usa:
+          <span class="muted">https://sicee.ltd/support</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section id="contacto">
+      <div class="grid">
+        <div class="card">
+          <h2>Contacto de soporte</h2>
+          <p>
+            Para asistencia técnica, problemas de acceso, reportes de errores o solicitudes relacionadas con datos,
+            contáctanos por email o usando el formulario.
+          </p>
+
+          <div class="divider"></div>
+
+          <div class="callout">
+            <b>Email oficial:</b> <a href="mailto:support@sicee.ltd">support@sicee.ltd</a><br/>
+            <b>Tiempo de respuesta:</b> 24–72 horas hábiles.
+          </div>
+
+          <ul>
+            <li>Incluye tu <b>versión de la app</b> y <b>modelo del dispositivo</b>.</li>
+            <li>Adjunta capturas de pantalla si es posible.</li>
+            <li>Indica fecha y hora aproximada del incidente.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Formulario de soporte (HTML)</h2>
+          <p class="mini">
+            Este formulario es estático. Para recibir mensajes necesitas conectarlo a un backend o servicio (ej. Formspree, Netlify Forms, Zapier, etc.).
+          </p>
+
+          <form action="#" method="post">
+            <div class="row">
+              <div>
+                <label for="name">Nombre</label>
+                <input id="name" name="name" type="text" placeholder="Tu nombre" />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="tu@email.com" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="topic">Motivo</label>
+                <select id="topic" name="topic">
+                  <option>Soporte técnico</option>
+                  <option>Problemas de acceso</option>
+                  <option>Reporte de bug</option>
+                  <option>Privacidad / Datos personales</option>
+                  <option>Eliminar cuenta</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+              <div>
+                <label for="appVersion">Versión de la app</label>
+                <input id="appVersion" name="appVersion" type="text" placeholder="Ej: 1.0.0" />
+              </div>
+            </div>
+
+            <div>
+              <label for="message">Mensaje</label>
+              <textarea id="message" name="message" placeholder="Describe tu solicitud con el mayor detalle posible."></textarea>
+            </div>
+
+            <button class="btn primary" type="button" onclick="alert('Conecta este formulario a un servicio para recibir mensajes (ej. Formspree / Netlify Forms).')">
+              Enviar
+            </button>
+
+            <p class="mini muted">
+              Al enviar tu solicitud, aceptas que SICEE LTD procese tu información únicamente para brindar soporte, según nuestra Política de Privacidad.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="card">
+        <h2>Preguntas frecuentes (FAQ)</h2>
+        <ul>
+          <li><b>¿Cómo reporto una incidencia?</b><br/>
+            Abre la app, selecciona la categoría de incidencia, agrega ubicación, descripción y evidencia (foto si aplica) y envía.
+          </li>
+          <li><b>¿Puedo editar un reporte enviado?</b><br/>
+            Depende de tu rol. En la mayoría de casos puedes añadir información adicional y evidencia, manteniendo trazabilidad.
+          </li>
+          <li><b>No me llegan notificaciones</b><br/>
+            Verifica permisos en iOS: Ajustes → Notificaciones → [Nombre de la app]. Asegúrate de permitir alertas y sonidos.
+          </li>
+          <li><b>¿Qué tipos de evidencia puedo adjuntar?</b><br/>
+            Fotos y notas. La evidencia se utiliza para validar reportes y mejorar la calidad del monitoreo.
+          </li>
+          <li><b>¿Cómo se valida un reporte?</b><br/>
+            El sistema puede requerir revisión por un moderador o equipo designado. El estatus puede cambiar a “En revisión”, “Verificado” o “Resuelto”.
+          </li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <div class="callout danger">
+          <b>Uso responsable:</b> esta app no reemplaza a las autoridades electorales. Reportes falsos o maliciosos pueden resultar en suspensión de cuenta.
+        </div>
+      </div>
+    </section>
+
+    <section id="privacidad">
+      <div class="card">
+        <h2>Política de Privacidad (resumen)</h2>
+        <p>
+          SICEE LTD respeta tu privacidad. Esta política explica cómo recopilamos, usamos y protegemos tu información
+          al utilizar la aplicación de monitoreo electoral.
+        </p>
+
+        <div class="divider"></div>
+
+        <h3 style="margin:0 0 8px;font-size:16px;">1. Información que recopilamos</h3>
+        <ul>
+          <li><b>Datos de cuenta</b>: nombre, correo o teléfono (si aplica), credenciales de autenticación.</li>
+          <li><b>Reportes e incidencias</b>: descripciones, ubicación aproximada o exacta (según permisos), categoría y estado.</li>
+          <li><b>Evidencia</b>: fotos u otros archivos adjuntos cuando el usuario los envía.</li>
+          <li><b>Datos técnicos</b>: versión de la app, dispositivo, logs de errores (para diagnóstico).</li>
+        </ul>
+
+        <h3 style="margin:14px 0 8px;font-size:16px;">2. Cómo usamos la información</h3>
+        <ul>
+          <li>Operar la plataforma de reportes y seguimiento.</li>
+          <li>Validar incidencias y mejorar la calidad del monitoreo.</li>
+          <li>Brindar soporte técnico y responder solicitudes.</li>
+          <li>Mejorar seguridad y prevenir abuso o fraude.</li>
+        </ul>
+
+        <h3 style="margin:14px 0 8px;font-size:16px;">3. Compartición de datos</h3>
+        <ul>
+          <li>No vendemos tus datos.</li>
+          <li>Podemos compartir información con proveedores técnicos (hosting, almacenamiento) estrictamente para operar el servicio.</li>
+          <li>Podemos compartir reportes con organizaciones autorizadas o autoridades cuando sea requerido por ley o por fines de verificación.</li>
+        </ul>
+
+        <h3 style="margin:14px 0 8px;font-size:16px;">4. Retención</h3>
+        <ul>
+          <li>Conservamos datos mientras sea necesario para operar la app y cumplir obligaciones legales.</li>
+          <li>Eliminaremos datos cuando se solicite, salvo que debamos conservarlos por motivos legales o de seguridad.</li>
+        </ul>
+
+        <h3 style="margin:14px 0 8px;font-size:16px;">5. Tus derechos</h3>
+        <ul>
+          <li>Acceso, corrección y eliminación de tus datos.</li>
+          <li>Solicitud de eliminación de cuenta desde esta página o escribiendo a soporte.</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <div class="callout">
+          <b>Contacto de privacidad:</b> <a href="mailto:privacy@sicee.ltd">privacy@sicee.ltd</a><br/>
+          <span class="mini">Si no tienes este email, usa support@sicee.ltd y cambia el texto.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="eliminar">
+      <div class="card">
+        <h2>Eliminar cuenta y datos</h2>
+        <p>
+          Puedes solicitar la eliminación de tu cuenta y datos personales en cualquier momento.
+          Esto incluye la eliminación de datos de perfil y, cuando sea aplicable, la disociación o eliminación de contenido adjunto.
+        </p>
+
+        <div class="divider"></div>
+
+        <h3 style="margin:0 0 8px;font-size:16px;">Opciones disponibles</h3>
+        <ul>
+          <li><b>Desde la app</b> (si la función está disponible): Ajustes → Cuenta → Eliminar cuenta.</li>
+          <li><b>Por soporte:</b> envía un email a <a href="mailto:support@sicee.ltd?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20cuenta">support@sicee.ltd</a> con el asunto “Solicitud de eliminación de cuenta”.</li>
+        </ul>
+
+        <div class="callout danger">
+          <b>Importante:</b> Algunos reportes pueden conservarse de forma anonimizada o por requerimientos legales/auditoría. La información personal asociada será eliminada cuando sea posible.
+        </div>
+
+        <h3 style="margin:14px 0 8px;font-size:16px;">Qué incluir en tu solicitud</h3>
+        <ul>
+          <li>Email o teléfono usado en la cuenta.</li>
+          <li>Motivo de la solicitud (opcional).</li>
+          <li>Si quieres borrar también evidencia adjunta (si aplica).</li>
+        </ul>
+
+        <p class="mini muted">
+          Tiempo estimado: 7–30 días, según el volumen de datos y requisitos de verificación.
+        </p>
+      </div>
+    </section>
+
+    <section id="terminos">
+      <div class="card">
+        <h2>Términos y uso responsable (resumen)</h2>
+        <ul>
+          <li>El usuario se compromete a reportar información veraz y a no manipular el sistema.</li>
+          <li>Se prohíbe el uso para hostigamiento, difusión de odio, o cualquier actividad ilegal.</li>
+          <li>SICEE LTD puede suspender cuentas que presenten abuso, fraude o reportes maliciosos.</li>
+          <li>El servicio se proporciona “tal cual”, sin garantías absolutas de disponibilidad.</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <div class="callout">
+          <b>Nota:</b> Puedes reemplazar este resumen por un documento legal completo enlazado desde aquí.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Reporte de problemas técnicos</h2>
+        <p>Si la app presenta errores, incluye esta información en tu reporte:</p>
+        <ul>
+          <li>Modelo del dispositivo (ej: iPhone 13)</li>
+          <li>Versión de iOS</li>
+          <li>Versión de la app</li>
+          <li>Descripción del problema</li>
+          <li>Capturas de pantalla o video (si aplica)</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <div class="callout">
+          <b>Contacto:</b> <a href="mailto:support@sicee.ltd">support@sicee.ltd</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px">
+          <div class="logo" aria-hidden="true"></div>
+          <span>
+            SICEE LTD
+            <small class="muted">Soporte oficial — Monitoreo Electoral</small>
+          </span>
+        </div>
+        <span class="tag">Soporte</span>
+        <span class="tag">Privacidad</span>
+        <span class="tag">Eliminación de cuenta</span>
+        <span class="tag">FAQ</span>
+      </div>
+
+      <div>
+        <p style="margin:0 0 8px"><b>Enlaces</b></p>
+        <p style="margin:0 0 6px"><a href="#inicio">Inicio</a></p>
+        <p style="margin:0 0 6px"><a href="#privacidad">Política de Privacidad</a></p>
+        <p style="margin:0 0 6px"><a href="#eliminar">Eliminar cuenta</a></p>
+        <p style="margin:0 0 6px"><a href="mailto:support@sicee.ltd">Contactar soporte</a></p>
+      </div>
+
+      <div>
+        <p style="margin:0 0 8px"><b>Legal</b></p>
+        <p style="margin:0">
+          © 2026 SICEE LTD. Todos los derechos reservados.
+        </p>
+        <p class="mini muted" style="margin-top:10px;max-width:44ch">
+          Este sitio está diseñado para cumplir con los requisitos de soporte de App Store. Puedes editar textos,
+          correos y enlaces según la infraestructura real de tu app.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
